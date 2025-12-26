@@ -5,13 +5,13 @@ resource "google_container_cluster" "gke" {
   name     = var.cluster_name
   project  = var.project_id
   location = var.zone
-
+  deletion_protection = false
   network    = var.network
   subnetwork = var.subnet
 
   remove_default_node_pool = true
   initial_node_count       = 1
-
+  
   private_cluster_config {
     enable_private_nodes    = var.enable_private_cluster
     enable_private_endpoint = false
